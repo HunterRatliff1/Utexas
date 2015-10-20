@@ -1,0 +1,48 @@
+---
+title: "CNS Career Fair ‘15"
+author: "Hunter Ratliff"
+date: "October 19, 2015"
+output: html_document
+---
+```{r citationfxn, echo=F, include=F}
+citation = function ()
+{
+  require(grid)
+  require(gridExtra)
+  grid.text("Hunter Ratliff | 2015",
+                     x = unit(0.97, "npc"), y = unit(0.97, "npc"), just = c("right", "bottom"), 
+                     gp = gpar(fontface = "bold", fontsize = 14, col = "grey"))
+}
+
+```
+
+```{r get Data}
+# url <- "https://docs.google.com/spreadsheets/d/1h0hJecODfuANmDvlGavfxb0ovWiuZporNAkR2jJZAeU/"
+# gs <- gs_key("url")
+## fair <- read.csv("https://docs.google.com/spreadsheets/d/1h0hJecODfuANmDvlGavfxb0ovWiuZporNAkR2jJZAeU/pub?output=csv", na.strings="")
+## fair = melt(fair, measure.vars=c("All.Majors", "CS", "Stats", "Math", "Physics", "Chem", "Bio", "Biochem", "EnviroSci", "Astronomy", "Public.Health", "HDFS", "Other"), na.rm = T, variable_name = "Seeking_Major")
+## write.csv(fair, file = "~/Google Drive/100 - Publicly hosted/rootR/utexas/career_fair_2015/data/fair.csv")
+require(ggplot2)
+require(tidyr)
+require(dplyr)
+require(magrittr)
+require(ggthemes)
+require(reshape2)
+
+
+```
+
+```{r, fig.height=10, fig.width=14}
+df = read.csv("~/Google Drive/100 - Publicly hosted/rootR/utexas/career_fair_2015/data/fair.csv")
+# df <- melt(fair, measure.vars=c("All.Majors", "CS", "Stats", "Math", "Physics", "Chem", "Bio", "Biochem", "EnviroSci", 
+  # "Astronomy", "Public.Health", "HDFS", "Other"), na.rm = T, variable_name = "Seeking_Major")
+
+ggplot(df, aes(x=factor(Seeking_Major))) + geom_histogram(aes(fill=Seeking_Major)) + 
+  scale_fill_discrete(guide=F) + ggtitle("Career Fair - College of Natural Science,\nProspective Jobs by Major (2015)") +
+  theme_fivethirtyeight() + scale_color_fivethirtyeight() + labs(x="Majors", y="Number of Organizations") 
+citation()
+
+
+
+
+```
