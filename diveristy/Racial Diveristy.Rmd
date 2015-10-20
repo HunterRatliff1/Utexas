@@ -1,0 +1,63 @@
+---
+title: "Utexas Racial Diversity"
+author: "Hunter Ratliff"
+date: "October 19, 2015"
+output: html_document
+---
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+First, we read in the data from a [Google Sheet](https://docs.google.com/spreadsheets/d/1pSZYzFwg87oY8lNInPJNQbQtIovGnNm_Itz_PxUYSoc/pub?gid=0&single=true&output=csv) I have hosted. It pulls data from the [Profile of General Population and Housing Characteristics: 2010 Demographic Profile Data](http://factfinder.census.gov/bkmk/table/1.0/en/DEC/10_DP/DPDP1/0400000US48) and 
+The University of Texas At Austin's [Common Data Set (2013-14)](https://www.utexas.edu/sites/default/files/files/IMA_PUB_CDS_2013_AY.pdf).   
+
+Read the chuck in as a CSV
+```{r Read from Google Sheet}
+url = "https://docs.google.com/spreadsheets/d/1pSZYzFwg87oY8lNInPJNQbQtIovGnNm_Itz_PxUYSoc/export?format=csv"
+demographics <- read.csv(file = url)
+summary(demographics)
+```
+
+Now, let's find out what it would look like if UT was proportional to the state demographics (roughly). To do this, we need to calculate the percentage of each race `State.Percent`
+
+```{r State Percent}
+# Total number of residents in the state
+State.Total = sum(demographics$State.Residents, na.rm=T)
+
+# States racial breakdown as a percentage of population
+State.Percent = demographics$State.Residents / State.Total # Rough breakdown, not accounting for everyone
+
+# Save vector to data frame
+demographics$State.Percent <- State.Percent
+```
+
+And multiply that by the total number of students at UT
+
+```{r UT by PercentState}
+# Total UT students
+UT.Total = sum(demographics$UT.Students, na.rm=T)
+
+# Find 'ideal' numbers if UT reflected state demographics
+UT.by.PercentState = State.Percent * UT.Total
+
+# Bind to data frame
+demographics$UT.by.PercentState <- UT.by.PercentState
+```
+
+***
+### Plot
+
+```{r PlotStats}
+require(ggplot2)
+require(ggthemes)
+
+ggplot(demographics, aes(x=Race)) + 
+  geom_bar(aes(y=UT.by.PercentState), stat = "identity", alpha=I(.8), fill=I("black")) + 
+  geom_bar(aes(y=UT.Students), stat = "identity", alpha=I(.3), fill=I("green"), color=I("#BF5700")) + 
+  labs(y="Number of students at UT") + theme_economist_white() + coord_flip() 
+
+```
+
+```{r}
+
+
+```

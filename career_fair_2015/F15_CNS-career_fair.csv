@@ -1,0 +1,216 @@
+,Special,Organization Name,Majors,CompSci,AllMajors,Math,Degrees Sought,Position Types,US Work Authorization Required?
+1,,AB (formerly AllianceBernstein),CS,TRUE,FALSE,FALSE,"BS, MS","FT, Intern",No
+2,,Adobe Systems ,"Stats, CS",TRUE,FALSE,TRUE,"BS, MS, Ph.D.","FT, Intern",No
+3,,Advisory Board Company,CS,TRUE,FALSE,FALSE,"BS, MS","FT, Intern",No
+4,Actuarial Section,AIG,All Majors,FALSE,TRUE,FALSE,"BS, MS","FT, Intern",No
+5,,Airbnb,"Stats, Math, CS",TRUE,FALSE,TRUE,"BS, MS, Ph.D.","FT, Intern",No
+6,,AirWatch by VMware,CS,TRUE,FALSE,FALSE,"BS, MS, Ph.D.",FT,Yes
+7,,Alarm.com,CS,TRUE,FALSE,FALSE,"BS, MS",FT,Yes
+8,,Allegro Development,"CS, Math, Stats",TRUE,FALSE,TRUE,"BA, MS",FT,Yes
+9,,Amazon,CS,TRUE,FALSE,FALSE,"BS, MS, Ph.D.","FT, Intern",No
+10,Actuarial Section,American Airlines,"Stats, Math, CS",TRUE,FALSE,TRUE,"BS, Cert, MS, Ph.D.","FT, Intern",No
+11,,American Express,CS,TRUE,FALSE,FALSE,"BS, MS","FT, Intern",Yes
+12,,AmeriCorps,All Majors,FALSE,TRUE,FALSE,"BS, Cert, MS",FT,Yes
+13,,Amplifi Commerce,CS,TRUE,FALSE,FALSE,BS,FT,Yes
+14,,Andreessen Horowitz,CS,TRUE,FALSE,FALSE,BS,FT,Yes
+15,,Aon,All Majors,FALSE,TRUE,FALSE,BS,"FT, Intern",Yes
+16,,Applied Research Laboratories (ARL),"CS, Math, Physics",TRUE,FALSE,TRUE,"BA, MS, Ph.D.","FT, Intern",Yes
+17,,Apprenda,"CS, Math",TRUE,FALSE,TRUE,"BA, MS, Ph.D.","FT, Intern",No
+18,,AT&T,"Stats, Physics, Math, CS",TRUE,FALSE,TRUE,"BS, MS","FT, Intern",Yes
+19,,"athenahealth, Inc.","Physics, Math, CS",TRUE,FALSE,TRUE,"BS, Cert, MS, Ph.D.","FT, Intern",Yes
+20,,Bazaarvoice,CS,TRUE,FALSE,FALSE,"BS, MS, Ph.D.","FT, Intern",No
+21,,Bentley Systems,CS,TRUE,FALSE,FALSE,"BS, MS","FT, Intern",Yes
+22,,Blackbaud,CS,TRUE,FALSE,FALSE,BS,"FT, Intern",Yes
+23,,Blizzard Entertainment,CS,TRUE,FALSE,FALSE,"BS, Cert, MS, Ph.D.","FT, Intern",Yes
+24,,Bloomberg,"Math, Physics, CS",TRUE,FALSE,TRUE,"BS, MS, Ph.D.","FT, Intern",No
+25,,"Blue Cross and Blue Shield of IL, MT, OK, NM and TX",All Majors,FALSE,TRUE,FALSE,,"FT, Intern",Yes
+26,,Bluebeam Software,"CS, Math",TRUE,FALSE,TRUE,BS,"FT, Intern",Yes
+27,,Booz Allen Hamilton,All Majors,FALSE,TRUE,FALSE,"BS, MS",FT,Yes
+28,,Broadleaf Commerce,CS,TRUE,FALSE,FALSE,"BA, MS, Ph.D.","FT, Intern",No
+29,Actuarial Section,"Buck Consultants, LLC, A Xerox Company ",Math,FALSE,FALSE,TRUE,,"FT, Intern",Yes
+30,,"Buoy, Inc.","CS, Physics, Math, Stats",TRUE,FALSE,TRUE,,FT,Yes
+31,Actuarial Section,Burns and Wilcox,All Majors,FALSE,TRUE,FALSE,,"FT, Intern",Yes
+32,,CA Technologies,CS,TRUE,FALSE,FALSE,BS,"FT, Intern",Yes
+33,,Capital One,"Public Health, Physics, Math, EnviroSci, CS, Chem, Bio, BioChem, Astronomy",TRUE,FALSE,TRUE,BS,"FT, Intern",Yes
+34,,CAPSHER,"CS, Math, Physics",TRUE,FALSE,TRUE,,"FT, Intern",Yes
+35,,CGG,"Physics, Math, CS",TRUE,FALSE,TRUE,"BS, MS, Ph.D.",FT,No
+36,,Charles Schwab & Co.,All Majors,FALSE,TRUE,FALSE,"BS, MS","FT, Intern",Yes
+37,,Chevron,"Math, CS",TRUE,FALSE,TRUE,BS,"FT, Intern",Yes
+38,Actuarial Section,Cigna,"Stats, Math",FALSE,FALSE,TRUE,"BS, Cert, MS, Ph.D.","FT, Intern",No
+39,,Citadel LLC,All Majors,FALSE,TRUE,FALSE,,"FT, Intern",No
+40,,Citi,"Stats, Physics, Math, CS",TRUE,FALSE,TRUE,"BS, MS","FT, Intern",Yes
+41,,Citrix,CS,TRUE,FALSE,FALSE,,"FT, Intern",No
+42,,Civilian Logistics Career Management Office (CLCMO),All Majors,FALSE,TRUE,FALSE,,"FT, Intern",No
+43,,Civitas Learning,"Math, CS",TRUE,FALSE,TRUE,"BS, MS",FT,Yes
+44,,Clover Network,"CS, Physics, Math, Stats, TXA",TRUE,FALSE,TRUE,,"FT, Intern",Yes
+45,,ConocoPhillips,CS,TRUE,FALSE,FALSE,"BS, MS","FT, Intern",Yes
+46,,Cox Automotive,"Physics, Math, CS",TRUE,FALSE,TRUE,BS,"FT, Intern",Yes
+47,,Cray,"CS, Math",TRUE,FALSE,TRUE,"BA, MS, Ph.D.","FT, Intern",No
+48,,Credera,"CS, Elements of Comp Cert.",TRUE,FALSE,FALSE,BA,"FT, Intern",Yes
+49,,CSC,CS,TRUE,FALSE,FALSE,"BA, MS",FT,No
+50,,CSX Corporation ,CS,TRUE,FALSE,FALSE,"BS, MS","FT, Intern",Yes
+51,,Customer Marketing Group,"Stats, Physics, Math",FALSE,FALSE,TRUE,"BS, MS, Ph.D.",Intern,No
+52,,Cvent,All Majors,FALSE,TRUE,FALSE,"BS, MS",FT,No
+53,,Dante Consulting,"CS, Math",TRUE,FALSE,TRUE,BA,FT,Yes
+54,,Dealertrack,CS,TRUE,FALSE,FALSE,"BS, MS",FT,No
+55,,"Dell, Inc.",CS,TRUE,FALSE,FALSE,"BS, MS","FT, Intern",No
+56,Technology Start Up Village,Delphix,CS,TRUE,FALSE,FALSE,BS,"FT, Intern",No
+57,,Denim Group,CS,TRUE,FALSE,FALSE,BA,FT,Yes
+58,,Dimensional Fund Advisors,All Majors,FALSE,TRUE,FALSE,,"FT, Intern",Yes
+59,,DIRECTV,CS,TRUE,FALSE,FALSE,BS,Intern,Yes
+60,Technology Start Up Village,DraftKings,CS,TRUE,FALSE,FALSE,,"FT, Intern",No
+61,,Elbit Systems of America,"CS, Physics, Math, Stats",TRUE,FALSE,TRUE,,"FT, Intern",Yes
+62,,Emerson Electric,CS,TRUE,FALSE,FALSE,"BS, MS","FT, Intern",Yes
+63,,Enthought,"Stats, Physics, Bio, Math, CS, Chem, Astronomy",TRUE,FALSE,TRUE,"MS, Ph.D.","FT, Intern",Yes
+64,,"EOG Resources, Inc.",CS,TRUE,FALSE,FALSE,BS,Intern,Yes
+65,,Epic,"Math, Stats, Physics, CS, Chem, Bio, BioChem",TRUE,FALSE,TRUE,"BS, MS, Ph.D.","FT, Intern",No
+66,Actuarial Section,Ernst & Young LLP,"Math, Stats",FALSE,FALSE,TRUE,"BS, MS","FT, Intern",No
+67,,Evonik Corporation,"EnviroSci, Chem, Bio, BioChem",FALSE,FALSE,FALSE,"BS, MS","FT, Intern",Yes
+68,,Experian Health,CS,TRUE,FALSE,FALSE,BS,FT,Yes
+69,,ExxonMobil Corporation,"Chem (Ph.D.), CS",TRUE,FALSE,FALSE,"BS, MS","FT, Intern",Yes
+70,,Facebook,"Physics, Math, CS",TRUE,FALSE,TRUE,"BS, MS","FT, Intern",No
+71,,"FactSet Research Systems, Inc.",CS,TRUE,FALSE,FALSE,"BS, MS","FT, Intern",Yes
+72,,Fidelity Investments,"Stats, Math, CS",TRUE,FALSE,TRUE,BS,"FT, Intern",No
+73,,Fitbit,"Stats, Math, CS",TRUE,FALSE,TRUE,"BS, MS, Ph.D.","FT, Intern",Yes
+74,Actuarial Section,Florida Blue,"Stats, Math, CS",TRUE,FALSE,TRUE,"BS, MS, Ph.D.","FT, Intern",Yes
+75,,Fluke Networks,"CS, Physics, Math, Stats",TRUE,FALSE,TRUE,,"FT, Intern",Yes
+76,,Fujitsu Network Communications,CS,TRUE,FALSE,FALSE,"BS, MS","FT, Intern",No
+77,,Futurex,CS,TRUE,FALSE,FALSE,"BS, MS","FT, Intern",Yes
+78,,Gemalto,CS,TRUE,FALSE,FALSE,"BS, MS, Ph.D.","FT, Intern",No
+79,,General Electric,"CS, Math, Physics",TRUE,FALSE,TRUE,,FT,Yes
+80,,General Motors,CS,TRUE,FALSE,FALSE,BS,FT,Yes
+81,,GoDaddy,"CS, Math",TRUE,FALSE,TRUE,"BS, MS, Ph.D.","FT, Intern",No
+82,,Golden Frog,"Math, CS",TRUE,FALSE,TRUE,"BS, Cert, MS",FT,Yes
+83,,Goldman Sachs,All Majors,FALSE,TRUE,FALSE,BS,Intern,No
+84,,"Google, Inc","Math, CS",TRUE,FALSE,TRUE,"BS, MS, Ph.D.","FT, Intern",No
+85,Technology Start Up Village,Graphiq,"Astronomy, Bio, Biochem, Chem, CS, Math, Physics, Stats",TRUE,FALSE,TRUE,"BS, MS, Ph.D.","FT, Intern",No
+86,,Halliburton,"Math, CS, Chem, BioChem",TRUE,FALSE,TRUE,"MS, Ph.D.","FT, Intern",Yes
+87,,HBK Capital Management,CS,TRUE,FALSE,FALSE,"BS, MS, Ph.D.","FT, Intern",No
+88,Actuarial Section,HCC Insurance Holdings,"Stats, Math, CS",TRUE,FALSE,TRUE,"BS, MS, Ph.D.","FT, Intern",Yes
+89,,Headspring,CS,TRUE,FALSE,FALSE,,FT,Yes
+90,,Hewlett-­‐Packard,CS,TRUE,FALSE,FALSE,BS,"FT, Intern",Yes
+91,,HMS -­‐ (Health Management System),All Majors,FALSE,TRUE,FALSE,BA,Intern,Yes
+92,,HomeAway,CS,TRUE,FALSE,FALSE,"BS, MS","FT, Intern",No
+93,,Honeywell,CS,TRUE,FALSE,FALSE,BS,Intern,Yes
+94,,Hudl,"Stats, Math, CS",TRUE,FALSE,TRUE,"BS, MS, Ph.D.","FT, Intern",Yes
+95,,IBM,CS,TRUE,FALSE,FALSE,"BS, MS",FT,Yes
+96,,"Identropy, Inc.",All Majors,FALSE,TRUE,FALSE,,FT,No
+97,,Indeed,CS,TRUE,FALSE,FALSE,BS,"FT, Intern",Yes
+98,,Information Technology Services at the University of Texas in Austin,All Majors,FALSE,TRUE,FALSE,,"FT, Intern",Yes
+99,,innoWake,CS,TRUE,FALSE,FALSE,"BA, MS, Ph.D.",FT,Yes
+100,,Intel Corporation,"Stats, Physics, Math, CS, Chem",TRUE,FALSE,TRUE,"BS, MS, Ph.D.","FT, Intern",No
+101,,Jet Propulsion Laboratory,"CS, EnviroSci, HDFS, Math Physics, Stats",TRUE,FALSE,TRUE,"BA, MS, Ph.D.","FT, Intern",Yes
+102,,JPMorgan Chase & Co.,"Math, CS",TRUE,FALSE,TRUE,"BS, MS","FT, Intern",Yes
+103,,KPMG LLP,"CS, Physics, Math, Stats",TRUE,FALSE,TRUE,"BS, MS, Ph.D.",FT,No
+104,,L-­‐3 Mission Integration,CS,TRUE,FALSE,FALSE,"BS, MS","FT, Intern",Yes
+105,,L'Oreal,"Chem, Physics, Math",FALSE,FALSE,TRUE,,"FT, Intern",Yes
+106,,Liberty Mutual,"CS, Math, Stats",TRUE,FALSE,TRUE,BS,"FT, Intern",Yes
+107,,Linkedin Corporation,CS,TRUE,FALSE,FALSE,BS,"FT, Intern",No
+108,,Lithium Technologies,CS,TRUE,FALSE,FALSE,,"FT, Intern",Yes
+109,,Lockheed Martin,"Physics, Math, CS",TRUE,FALSE,TRUE,"BS, MS","FT, Intern",Yes
+110,,Macedon Technologies,CS,TRUE,FALSE,FALSE,BS,FT,No
+111,,"Macy's, Inc.","Textiles and Apparel, Stats, Math, CS",TRUE,FALSE,TRUE,BS,"FT, Intern",Yes
+112,,Main Street Hub,"Physics, Math, CS",TRUE,FALSE,TRUE,BS,FT,Yes
+113,,Mellanox Technologies,"CS, Physics, Math, Stats",TRUE,FALSE,TRUE,,"FT, Intern",No
+114,,MaxPoint,"CS, Math, Stats",TRUE,FALSE,TRUE,,"FT, Intern",No
+115,,Meraki,"Math, CS",TRUE,FALSE,TRUE,"BS, MS, Ph.D.","FT, Intern",No
+116,Actuarial Section,Mercer,"Stats, Public Health, Math, CS",TRUE,FALSE,TRUE,BS,"FT, Intern",Yes
+117,,METECS,CS,TRUE,FALSE,FALSE,"BS, MS","FT, Intern",Yes
+118,,Microsoft,"Math, CS",TRUE,FALSE,TRUE,"BS, MS, Ph.D.","FT, Intern",No
+119,,MIT Lincoln Laboratory,"Physics, Math, CS, Chem, Bio, BioChem, Astronomy",TRUE,FALSE,TRUE,"BS, MS, Ph.D.","FT, Intern",Yes
+120,,National Instruments,"Math, CS",TRUE,FALSE,TRUE,"BS, MS, Ph.D.","FT, Intern",No
+121,,NCC Group,"Math, CS",TRUE,FALSE,TRUE,"BS, MS, Ph.D.","FT, Intern",No
+122,,NetSuite,CS,TRUE,FALSE,FALSE,"BS, MS","FT, Intern",No
+123,,O'Connor's,"Stats, Math, CS",TRUE,FALSE,TRUE,BS,"FT, Intern",No
+124,,"o9 Solutions, Inc.",All Majors,FALSE,TRUE,FALSE,,"FT, Intern",No
+125,,Offers.com,CS,TRUE,FALSE,FALSE,"BA, Cert",FT,Yes
+126,,Oracle,"Stats, Physics, Math, CS",TRUE,FALSE,TRUE,"BS, MS, Ph.D.","FT, Intern",No
+127,,Orbitz Worldwide,CS,TRUE,FALSE,FALSE,BS,FT,No
+128,,Palantir Technologies,"Stats, Math, CS",TRUE,FALSE,TRUE,"BS, MS","FT, Intern",Yes
+129,,Palo Alto Networks,CS,TRUE,FALSE,FALSE,"BS, MS, Ph.D.","FT, Intern",No
+130,,Pariveda Solutions,"Physics, Math, CS",TRUE,FALSE,TRUE,BS,"FT, Intern",Yes
+131,,PayPal,CS,TRUE,FALSE,FALSE,"BS, MS, Ph.D.","FT, Intern",No
+132,,Peace Corps,All Majors,FALSE,TRUE,FALSE,"BS, MS",FT,Yes
+133,,Pearson,CS,TRUE,FALSE,FALSE,"BS, MS","FT, Intern",No
+134,,PepsiCo,"CS, Physics, Math, Stats",TRUE,FALSE,TRUE,,"FT, Intern",Yes
+135,,Perficient,CS,TRUE,FALSE,FALSE,"BS, MS",FT,No
+136,,"Periscope Holdings, Inc.",All Majors,FALSE,TRUE,FALSE,,FT,Yes
+137,,"Pinterest, Inc.",CS,TRUE,FALSE,FALSE,"BS, MS, Ph.D.","FT, Intern",No
+138,Technology Start Up Village,Praetorian,CS,TRUE,FALSE,FALSE,"BS, MS, Ph.D.","FT, Intern",Yes
+139,,PricewaterhouseCoopers,"Math, CS",TRUE,FALSE,TRUE,"BS, MS","FT, Intern",Yes
+140,,Procter & Gamble,"Chem, Bio, BioChem",FALSE,FALSE,FALSE,"BS, MS, Ph.D.","FT, Intern",Yes
+141,,Produce Pro Software,CS,TRUE,FALSE,FALSE,"BS, MS",FT,Yes
+142,,PROS,"CS, Math",TRUE,FALSE,TRUE,"BA, MS, Ph.D.",FT,Yes
+143,,Pure Storage,CS,TRUE,FALSE,FALSE,"BS, MS, Ph.D.","FT, Intern",No
+144,,Qualtrics,CS,TRUE,FALSE,FALSE,BS,FT,Yes
+145,,"Quantlab Financial, LLC","Physics, Math, CS",TRUE,FALSE,TRUE,"BS, MS, Ph.D.","FT, Intern",No
+146,,Quora,"Stats, Math, CS",TRUE,FALSE,TRUE,"BS, MS, Ph.D.","FT, Intern",No
+147,,Quorum Business Solutions,"Stats, Physics, Math, CS, Chem",TRUE,FALSE,TRUE,"BS, MS",FT,Yes
+148,,Rackspace,"Math, CS",TRUE,FALSE,TRUE,"BS, MS, Ph.D.","FT, Intern",Yes
+149,,Raytheon Company,"Physics, Math, CS",TRUE,FALSE,TRUE,"BS, MS","FT, Intern",Yes
+150,,Reddwerks,CS,TRUE,FALSE,FALSE,"BS, MS",FT,No
+151,Technology Start Up Village,Redfin,"Stats, CS",TRUE,FALSE,TRUE,BS,"FT, Intern",No
+152,,"RetailMeNot, Inc.",CS,TRUE,FALSE,FALSE,BS,"FT, Intern",No
+153,,Rev.com,CS,TRUE,FALSE,FALSE,BS,FT,Yes
+154,Actuarial Section,"Rudd and Wisdom, Inc. Consulting Actuaries",Math,FALSE,FALSE,TRUE,,"FT, Intern",Yes
+155,,Rx Wiki,All Majors,FALSE,TRUE,FALSE,,FT,Yes
+156,,Salesforce,"Stats, Math, CS",TRUE,FALSE,TRUE,"BS, MS, Ph.D.","FT, Intern",No
+157,,Sandia National Laboratories,"Stats, Physics, Math, EnviroSci, CS, Chem, BioChem, Astronomy",TRUE,FALSE,TRUE,"BS, MS, Ph.D.","FT, Intern",Yes
+158,,SAS Institute,"CS, Physics, Math, Stats",TRUE,FALSE,TRUE,,"FT, Intern",Yes
+159,,Schlumberger,CS,TRUE,FALSE,FALSE,"BS, MS, Ph.D.","FT, Intern",Yes
+160,,SnapStream Media Inc.,CS,TRUE,FALSE,FALSE,"BA, MS, Ph.D.","FT, Intern",No
+161,,Sogeti,CS,TRUE,FALSE,FALSE,BS,FT,Yes
+162,,Southwestern Energy,"CS, Physics, Math, Stats",TRUE,FALSE,TRUE,,Intern,Yes
+163,,Spectra Energy,EnviroSci,FALSE,FALSE,FALSE,BS,"FT, Intern",Yes
+164,Technology Start Up Village,SpiceWorks,"CS, Math",TRUE,FALSE,TRUE,BA,Intern,Yes
+165,,Splunk,CS,TRUE,FALSE,FALSE,"BS, MS, Ph.D.","FT, Intern",No
+166,,Spredfast,All Majors,FALSE,TRUE,FALSE,,"FT, Intern",Yes
+167,,State Farm Insurance Companies,"CS, Math, Stats",TRUE,FALSE,TRUE,"BA, MS","FT, Intern",Yes
+168,Technology Start Up Village,Steelwedge Software,CS,TRUE,FALSE,FALSE,,"FT, Intern",Yes
+169,,SunGard Global Services,CS,TRUE,FALSE,FALSE,"BA, MS",FT,Yes
+170,,SunGard Financial Systems,"Math, CS",TRUE,FALSE,TRUE,BS,FT,No
+171,,Tableau Software,"Math, CS",TRUE,FALSE,TRUE,"BS, MS","FT, Intern",No
+172,,Target Corporation,All Majors,FALSE,TRUE,FALSE,"BS, MS","FT, Intern",Yes
+173,,Techemet Metal Trading,"CS, Math",TRUE,FALSE,TRUE,"BA, MS",FT,No
+174,,Telogis,"Math, CS",TRUE,FALSE,TRUE,"BS, MS","FT, Intern",No
+175,,Teradata,CS,TRUE,FALSE,FALSE,"BS, MS, Ph.D.","FT, Intern",No
+176,,Texas Commission on Environmental Quality,All Majors,FALSE,TRUE,FALSE,"BA, MS",Intern,Yes
+177,,Texas Instruments,CS,TRUE,FALSE,FALSE,"BS, MS, Ph.D.","FT, Intern",Yes
+178,,Texas Water Development Board,All Majors,FALSE,TRUE,FALSE,"BA, Cert, MS, Ph.D.","FT, Intern",Yes
+179,,Textron,CS,TRUE,FALSE,FALSE,BS,"FT, Intern",Yes
+180,,The Blood & Tissue Center of Central Texas,"Bio, Biochem, Chem, Stats, NeuroSci, HDFS, Public Health",FALSE,FALSE,TRUE,,"FT, Intern",Yes
+181,,The Dow Chemical Company,"CS, Physics, Math, Stats",TRUE,FALSE,TRUE,"BS, MS, Ph.D.","FT, Intern",Yes
+182,,Thomson Reuters,"Math, Stats, CS, Physics",TRUE,FALSE,TRUE,,"FT, Intern",Yes
+183,,Thoughtworks,CS,TRUE,FALSE,FALSE,,FT,No
+184,,TIBCO Software Inc.,"CS, Physics, Math, Stats",TRUE,FALSE,TRUE,,"FT, Intern",No
+185,,Tinker Air Force Base Civilian Employment,"CS, Physics, Math, Stats",TRUE,FALSE,TRUE,,FT,Yes
+186,Actuarial Section,Towers Watson,"Stats, Public Health, Math",FALSE,FALSE,TRUE,"BS, MS","FT, Intern",No
+187,,TripAdvisor,CS,TRUE,FALSE,FALSE,"BS, MS, Ph.D.","FT, Intern",No
+188,,Turnitin,"CS, Physics, Math, Stats",TRUE,FALSE,TRUE,,FT,Yes
+189,,Twitter,"Stats, CS",TRUE,FALSE,TRUE,"BS, MS, Ph.D.","FT, Intern",No
+190,Technology Start Up Village,Umbel,All Majors,FALSE,TRUE,FALSE,"BA, Cert, MS, Ph.D.","FT, Intern",No
+191,,UnboundID,CS,TRUE,FALSE,FALSE,BS,Intern,Yes
+192,,Under Armour,"Textiles and Apparel, Physics, Math, CS",TRUE,FALSE,TRUE,BS,Intern,No
+193,,Union Pacific Railroad,"Stats, Math, CS",TRUE,FALSE,TRUE,"BS, MS, Ph.D.","FT, Intern",No
+194,,UnitedHealth Group,CS,TRUE,FALSE,FALSE,,"FT, Intern",Yes
+195,,"US Army Aviation and Missile Research, Development, and Engineering Center","Chem, CS, Math, Physics, Stats",TRUE,FALSE,TRUE,,FT,Yes
+196,,"US Marine Corps Officer Selection Team Austin, TX",All Majors,FALSE,TRUE,FALSE,,"FT, Intern",Yes
+197,,US Navy,All Majors,FALSE,TRUE,FALSE,BA,FT,Yes
+198,Actuarial Section,USAA,"Math, CS",TRUE,FALSE,TRUE,"BS, MS","FT, Intern",Yes
+199,,uShip,"CS, Physics, Math, Stats",TRUE,FALSE,TRUE,,Intern,No
+200,,UT Health School of Biomedical Informatics at Hou,All Majors,FALSE,TRUE,FALSE,BA,FT,No
+201,,UT Health Science Center at Tyler,"Biochem, Bio, Chem, MedLabSci, Physics, HP",FALSE,FALSE,FALSE,BA,FT,Yes
+202,,Vectra Networks,CS,TRUE,FALSE,FALSE,"BA, Cert, MS, Ph.D.","FT, Intern",No
+203,,Verizon,"Math, CS",TRUE,FALSE,TRUE,"BS, MS","FT, Intern",No
+204,,Visa,"CS, Physics, Math, Stats",TRUE,FALSE,TRUE,"BS, MS, Ph.D.","FT, Intern",No
+205,,VML,"CS, Physics, Math, Stats, TXA",TRUE,FALSE,TRUE,,"FT, Intern",No
+206,,"VMware, Inc.",CS,TRUE,FALSE,FALSE,"BS, MS, Ph.D.","FT, Intern",No
+207,,Volusion,"Physics, Math, CS",TRUE,FALSE,TRUE,"BS, MS","FT, Intern",No
+208,,Websense,"Bio, CS, Math, Physics, Stats Elements ofComp Cert.",TRUE,FALSE,TRUE,"BA, Cert, MS","FT, Intern",Yes
+209,Technology Start Up Village,Weebly,CS,TRUE,FALSE,FALSE,"BS, Cert, MS, Ph.D.","FT, Intern",Yes
+210,,WhatsApp,"Physics, Math, CS",TRUE,FALSE,TRUE,,"FT, Intern",No
+211,,Workday,"Stats, Math, CS",TRUE,FALSE,TRUE,BS,"FT, Intern",Yes
+212,,WP Engine,All Majors,FALSE,TRUE,FALSE,BS,FT,Yes
+213,,Xerox,All Majors,FALSE,TRUE,FALSE,,FT,No
+214,,Yelp,CS,TRUE,FALSE,FALSE,"BS, MS","FT, Intern",No
+215,,YES Prep Public Schools,All Majors,FALSE,TRUE,FALSE,"BS, MS, Ph.D.","FT, Intern",No
