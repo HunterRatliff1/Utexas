@@ -1,0 +1,70 @@
+---
+title: "Final Grades"
+author: "Hunter Ratliff"
+date: "November 30, 2015"
+output: html_document
+---
+
+```{r GOV}
+gov <- function(webtext = 0.7107, out.class = 1.00, EX.1=0.75, EX.2) {
+  if(is.na(EX.2)) {
+    return(sum(webtext*100 + out.class*50 + EX.1*100)/250)
+  } else {
+    return(sum(webtext*100 + out.class*50 + EX.1*100 + EX.2*100)/350)
+  }
+}
+
+get_color <- function(num){
+  if(num>=0.9 & num<=1.0) return("green")
+  if(num>=0.8 & num<=0.9) return("blue")
+  if(num>=0.7 & num<=0.8) return("orange")
+  if(num>=0.5 & num<=0.7) return("red")
+}
+
+qplot(data=as.data.frame(list(GOV.Exam=c(1:20)*5, GOV.Final=sapply((c(1:20)*0.05), gov))), x=GOV.Exam, y=GOV.Final,  color=GOV.Final) + ylim(c(0,1)) + scale_colour_gradient(limits=c(0, 1), low="red", high="blue", space="Lab")
+
+```
+
+```{r AFR}
+require(scales)
+AFR <- function(quizes=c(.8, .10, .8), Q4=.8, MT=16/30, Final) {
+  # quizes <-  # Out of 40
+  
+  # if(is.na(Final)) return(percent(sum(quizes, MT)/70))
+  # Final  <- Final * 0.30
+  # message(paste0("Quizes: ", percent(quizes/40), " ~ MidTerm: ", percent(MT/30)))
+  return(percent(sum((sum(quizes)+Q4)*.40, MT*.3, Final*.3)))
+}
+AFR(Final=0)
+AFR(Final=100)
+```
+
+```{r BCH}
+BCH <- function(pres=NA, Q7=1, Q8=1, Q2=0.5, Q5=0.5) {
+  Rosalind = 18.75	# 20
+  EX1			 = 10.7	  # 16
+  EX2			 = 11.7   # 16
+  pop.quiz = c(0.5, Q2, 1, 1, Q5, 1, Q7, Q8) # 8
+  GD.1     = 9      # 10
+  GD.2     = 8      # 10
+  if(is.na(pres)) return(percent(sum(Rosalind, EX1, EX2, pop.quiz, GD.1, GD.2)/80))
+  return(percent(sum(Rosalind, EX1, EX2, pop.quiz, GD.1, GD.2, pres)/100))
+}
+BCH(pres=20)
+BCH(pres=18)
+BCH(pres=16)
+```
+
+```{r PHL}
+PHL <- function(Final=NA, MT.1=.83, MT.2=.81, Quizes=.4, Attend=.8, MT.3=.82){
+  MT.1 = MT.1 * 20
+  MT.2 = MT.2 * 20
+  MT.3 = MT.3 * 20  
+  Quizes <- Quizes * 5 
+  Attend <- Attend * 5 
+  if(is.na(Final)) return(percent(sum(MT.1, MT.2, MT.3, Quizes, Attend)/70))
+  Final <- Final * 30
+  return(percent(sum(MT.1, MT.2, MT.3, Quizes, Attend, Final)/100))
+}
+PHL(MT.3 = .9, Final = .9, MT.2=.87)
+```

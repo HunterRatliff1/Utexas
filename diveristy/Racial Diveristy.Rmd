@@ -1,63 +1,143 @@
 ---
-title: "Utexas Racial Diversity"
+title: "UTexas Racial Diversity"
 author: "Hunter Ratliff"
 date: "October 19, 2015"
-output: html_document
+output: 
+  html_document:
+    theme: united
 ---
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+```{r global_options, include=FALSE}
+require(knitr)
+
+# setwd("~/Google Drive/100 - Publicly hosted/rootR/Bioinformatics")
+# opts_knit$set(root.dir = "..")
+
+## Sets output for figures
+knitr::opts_chunk$set(fig.width=12, fig.height=8, fig.path='Figures/',
+                      echo=TRUE, warning=FALSE, message=FALSE, fig.align='center')
+```
+
+```{r LOAD | Packs}
+sapply(c("magrittr", "dplyr", "reshape2", "ggplot2", "RCurl"), require, character.only=TRUE)  
+
+source("~/Github/Citations/Citation Function.R")
+source("~/Github/utexas/diveristy/theme_UT.R")
+```
+
 
 First, we read in the data from a [Google Sheet](https://docs.google.com/spreadsheets/d/1pSZYzFwg87oY8lNInPJNQbQtIovGnNm_Itz_PxUYSoc/pub?gid=0&single=true&output=csv) I have hosted. It pulls data from the [Profile of General Population and Housing Characteristics: 2010 Demographic Profile Data](http://factfinder.census.gov/bkmk/table/1.0/en/DEC/10_DP/DPDP1/0400000US48) and 
 The University of Texas At Austin's [Common Data Set (2013-14)](https://www.utexas.edu/sites/default/files/files/IMA_PUB_CDS_2013_AY.pdf).   
 
 Read the chuck in as a CSV
-```{r Read from Google Sheet}
-url = "https://docs.google.com/spreadsheets/d/1pSZYzFwg87oY8lNInPJNQbQtIovGnNm_Itz_PxUYSoc/export?format=csv"
-demographics <- read.csv(file = url)
-summary(demographics)
+```{r LOAD | from Google Sheet}
+url1 <- getURL(paste0("https://docs.google.com/spreadsheets/d/",
+               "1pSZYzFwg87oY8lNInPJNQbQtIovGnNm_Itz_PxUYSoc",
+               "/export?format=csv"))
+url2 <- getURL(paste0("https://docs.google.com/spreadsheets/d/",
+               "1pSZYzFwg87oY8lNInPJNQbQtIovGnNm_Itz_PxUYSoc",
+               "/pub?gid=309167376&single=true&output=csv"))
+
+Texas <- read.csv(textConnection(url1))
+Colleges <- read.csv(textConnection(url2))
+
+summary(Colleges)
 ```
 
+```{r}
+Colleges <- Colleges %>% melt(measure.vars = c("Men", "Women"), 
+                              variable.name = "sex", value.name = "students")
+df <- Colleges %>% group_by(College) %>% mutate(percent = students/sum(students))
+```
+
+```{r}
+qplot(data=df, x=percent, fill=sex, geom="density", alpha=I(0.5)) + facet_wrap("College") + theme_UT()
+# qplot(data=df, x=percent, fill=College) + facet_grid(Race ~ sex) + theme_UT()
+qplot(data=df, x=Race, y=College, geom="tile", fill=percent) + theme_UT() + theme(axis.text.x = element_text(angle = 90))
+```
 Now, let's find out what it would look like if UT was proportional to the state demographics (roughly). To do this, we need to calculate the percentage of each race `State.Percent`
 
 ```{r State Percent}
 # Total number of residents in the state
-State.Total = sum(demographics$State.Residents, na.rm=T)
+State.Total = sum(Texas$Texas, na.rm=T)
 
 # States racial breakdown as a percentage of population
-State.Percent = demographics$State.Residents / State.Total # Rough breakdown, not accounting for everyone
+State.Percent = Texas$Texas / State.Total # Rough breakdown, not accounting for everyone
 
 # Save vector to data frame
-demographics$State.Percent <- State.Percent
+Texas$State.Percent <- State.Percent
 ```
 
 And multiply that by the total number of students at UT
 
 ```{r UT by PercentState}
 # Total UT students
-UT.Total = sum(demographics$UT.Students, na.rm=T)
+UT.Total = sum(Texas$Utexas, na.rm=T)
 
 # Find 'ideal' numbers if UT reflected state demographics
 UT.by.PercentState = State.Percent * UT.Total
 
 # Bind to data frame
-demographics$UT.by.PercentState <- UT.by.PercentState
+Texas$UT.by.PercentState <- UT.by.PercentState
 ```
 
 ***
-### Plot
 
 ```{r PlotStats}
 require(ggplot2)
 require(ggthemes)
 
-ggplot(demographics, aes(x=Race)) + 
-  geom_bar(aes(y=UT.by.PercentState), stat = "identity", alpha=I(.8), fill=I("black")) + 
-  geom_bar(aes(y=UT.Students), stat = "identity", alpha=I(.3), fill=I("green"), color=I("#BF5700")) + 
-  labs(y="Number of students at UT") + theme_economist_white() + coord_flip() 
+fig <- ggplot(Texas, aes(x=Race)) + 
+  geom_bar(aes(y=UT.by.PercentState/1000), 
+           stat = "identity", alpha=I(.8), fill=I("black")) + 
+  geom_bar(aes(y=Utexas/1000), 
+           stat = "identity", alpha=I(.3), fill=I("#BF5700"), color=I("#BF5700")) + 
+  labs(y="Number of students at UT", 
+       title="Representation of UT Students \nvs Texas Population by race") +
+  theme_economist_white() + coord_flip() + theme_UT()
+
+gridExtra::grid.arrange(fig, 
+  grid::textGrob(
+"Black bars represent the number of students UT would\nhave if it were representative of the state's population.
+The burnt orange bars represent the actual number of students at UT\n\n
+The portions of the bars that are black equate to over representation, 
+while the light burnt orange equates to underrepresntation"))
+                 
+citation()
 
 ```
 
-```{r}
+Black bars represent the number of students UT would\nhave if it were representative of the state's population.
+The burnt orange bars represent the actual number of students at UT\n\n
+The portions of the bars that are black equate to over representation, 
+while the light burnt orange equates to underrepresntation
+
+***
+# Contact
+
+**Hunter Ratliff**
+
+Email: HunterRatliff1@gmail.com   
+Twitter: @[HunterRatliff1](https://twitter.com/HunterRatliff1)   
+
+```
+Copyright (C) 2015 Hunter Ratliff
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 
 ```
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.

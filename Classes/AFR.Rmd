@@ -1,0 +1,363 @@
+---
+title: "Text Mining "
+author: "Hunter Ratliff"
+date: "December 2, 2015"
+output: 
+  html_document:
+    theme: united
+    toc: true
+---    
+
+<!-- Functions, Globals, ... --> 
+
+```{r global_options, include=FALSE}
+require(knitr)  # opts_knit$set(root.dir = "..")
+
+## Sets output for figures
+knitr::opts_chunk$set(fig.width=8, fig.height=8, fig.path='Figures/',
+                      warning=FALSE, message=FALSE, fig.align='center')
+
+# Required packages
+sapply(c("ggplot2", "dplyr", "lubridate", "reshape2", "magrittr", "stringi", "RColorBrewer", "tm", "openNLP", "knitr", "SnowballC",
+         "tidyr", "ggthemes", "scales", "RCurl", "gridExtra", "googlesheets", "xtable"), require, character.only=TRUE)  
+
+# Citation functions
+# source("~/Github/Citations/Citation Function.R")
+source("~/Github/twitter/QuickWordclouds.R")
+rm(Query.to.corpus, wc.full, citation.apa, citation.date)
+
+
+
+### contributing source:
+# https://rstudio-pubs-static.s3.amazonaws.com/31867_8236987cf0a8444e962ccd2aec46d9c3.html
+```
+
+```{r Auth & Functions, eval=F, echo=F}
+## # Authorize with Google Drive
+## (my_sheets <- gs_ls())
+
+# Function to lookup sheet
+getSheet <- function(worksheet_name) {
+  Ref_df <- gs_title("Fall 2015 Notes")%>% gs_read_csv(ws = worksheet_name)
+  return(Ref_df)
+}
+
+```
+
+# GOV 310L
+
+## Load & Process Notes
+
+```{r GOV load, echo=T}
+# Get GOV Sheet from local source
+df.gov <- read.csv("GOV.csv")
+
+# Download my notes
+df.gov$Notes         <- sapply(df.gov$URL, function(x) readLines(textConnection(getURL(paste0(x, "/export?format=txt")))))
+names(df.gov$Notes)  <- df.gov$Topic
+
+# Make notes a corpus & apply transformations
+Corpus.gov <- lapply(df.gov$Notes, stri_flatten, collapse = " ") %>%
+  VectorSource() %>% Corpus() %>%
+  tm_map(content_transformer(function(x) gsub("GOV310L \\| Unit II", " ", x))) %>%
+  tm_map(content_transformer(function(x) gsub("American and Texas Government \\| GOV 310L", " ", x))) %>%
+  tm_map(content_transformer(function(x) gsub("HUNTER RATLIFF", " ", x))) %>%
+  tm_map(content_transformer(function(x) gsub("HunterRatliff1@gmail.com", " ", x))) %>%
+  tm_map(content_transformer(function(x) gsub("/", " ", x))) %>%
+  tm_map(content_transformer(function(x) gsub("-", " ", x))) %>%
+  tm_map(content_transformer(tolower)) %>%
+  tm_map(content_transformer(stripWhitespace)) %>%
+  tm_map(content_transformer(removePunctuation)) %>%
+  tm_map(content_transformer(removeNumbers)) %>%
+  tm_map(removeWords, stopwords("english")) %>%
+  tm_map(removeWords, c("gov", "hunter", "ratliff", "hunterratliffgmailcom")) 
+```
+
+## Heatmap 
+
+Scaled to each lecture's word count
+
+```{r FXN getTDM_sparse}
+if (!require("devtools")) install.packages("devtools")
+  devtools::install_github("rstudio/d3heatmap")
+  require(d3heatmap)
+  
+getTDM_sparse <- function(Corpus, df, sparsity) {
+  tdm.stem   <- Corpus %>% tm_map(stemDocument) %>% TermDocumentMatrix()
+  words      <- Corpus %>% TermDocumentMatrix() %>% Terms()
+  
+  tdms                <- removeSparseTerms(tdm.stem, sparsity)
+  tdms$dimnames$Terms <- stemCompletion(Terms(tdms), dictionary = words) %>% as.character()
+  
+  tdms$dimnames$Docs <- df$Topic
+  tdms$dimnames$Terms <- as.character(tdms$dimnames$Terms)
+  
+  return(tdms)
+}
+```
+
+```{r GOV Heatmap}
+tdms.gov <- getTDM_sparse(Corpus = Corpus.gov, df = df.gov, sparsity = 0.287)
+d3heatmap(t(as.matrix(tdms.gov)), scale = "column")
+```
+
+## Dendrogram
+
+```{r GOV dendrogram, echo=T}
+tdms.gov <- getTDM_sparse(Corpus = Corpus.gov, df = df.gov, sparsity = 0.4)
+inspect(tdms.gov)
+
+require(cluster)   
+dist_matrx.gov <- dist(tdms.gov, method="euclidian")   
+fit.dist <- hclust(d=dist_matrx.gov, method="ward.D2")   
+fit.dist
+plot(fit.dist, hang=-1, main="Dendrogram: Words used in GOV310L notes")
+par(mai = c(1,1,1,1)) # bottom, left, top, right
+
+groups <- cutree(fit.dist, k=6)          # "k=" defines the number of clusters you are using   
+rect.hclust(fit.dist, k=6, border="red")     # draw dendogram with red borders around the 6 clusters   
+rect.hclust(fit.dist, k=9, border="blue")    # draw dendogram with red borders around the 5 clusters   
+rect.hclust(fit.dist, k=12, border="green")  # draw dendogram with red borders around the 5 clusters   
+```
+
+## Grouping by kmeans
+
+```{r GOV kmeans, echo=T}
+library(fpc)   
+kfit <- kmeans(dist_matrx.gov, 7)   
+clusplot(as.matrix(dist_matrx.gov), kfit$cluster, color=T, shade=T, labels=2, lines=0, main="Cluster Plot: Words used in GOV310L notes")   
+```
+
+## Word Cloud
+
+```{r GOV WC, eval=FALSE}
+Make.Wordcloud(Corpus.gov)
+# wordcloud(tdms)
+```
+
+```{r GOV vocab}
+source("/Users/main/Github/utexas/Classes/findMatchingTerms.R")
+source("/Users/main/Github/utexas/Classes/vocab_network.R")
+
+
+df.vocab <- loadVocab()
+# found.dtm <- findMatchingTerms(vocab_list=df.vocab$vocab_search, 
+#                                notes_corpus=Corpus.gov, 
+#                                TermsToAdd = findFreqTerms(TermDocumentMatrix(Corpus.gov), 10))
+found.dtm <- findMatchingTerms(vocab_list=df.vocab$vocab_search, notes_corpus=Corpus.gov, TermsToAdd = NA)
+                               
+
+
+found.dtm$dimnames$Docs <- as.character(df.gov$Topic) # Label Doc by Topic of the lecture                 
+# Set seed to make the layout reproducible
+set.seed(3952)
+require(igraph)
+g <- get_igraph(matrix=t(as.matrix(found.dtm)))
+
+# Remove loops, set labels and degrees of vertices
+g <- simplify(g)
+V(g)$label <- V(g)$name
+V(g)$degree <- degree(g)
+
+# Sizes
+
+V(g)$shape     <- "rectangle"
+V(g)$label.cex <- 0.5 * V(g)$degree / max(V(g)$degree) + 0.3
+V(g)$size      <- 2.5 * nchar(V(g)$label) * V(g)$label.cex
+V(g)$size2     <- 9 * V(g)$label.cex
+
+
+# Colors
+# V(g)$label.color <- "#C0C0C0"  # Light grey
+# V(g)$label.color <- "#25383C"  # Dark Slate Grey
+
+V(g)$frame.color <- NA
+egam <- (log(E(g)$weight)+.4) / max(log(E(g)$weight)+.4)
+E(g)$color <- rgb(.5, .5, 0, egam)
+E(g)$width <- egam
+
+# # plot the graph a few layouts
+# layout1 <- layout.fruchterman.reingold(g)
+# plot(g, layout=layout1)
+
+# Clusters
+betweenness <- cluster_edge_betweenness(g)
+# fast_greedy <- cluster_fast_greedy(g)
+# prop <- cluster_label_prop(g)
+# plot(prop, g, layout=layout.auto)
+plot(betweenness, g, layout=layout.auto)
+                        
+d3heatmap::d3heatmap(as.matrix(found.dtm), scale = "column")
+
+
+```
+
+# AFR 301
+
+
+## Load & Process Notes
+
+```{r AFR load}
+# Get AFR Sheet from local source
+df.afr <- read.csv("AFR.csv")
+
+# Download my notes
+df.afr$Notes         <- sapply(df.afr$URL, function(x) readLines(textConnection(getURL(paste0(x, "/export?format=txt")))))
+names(df.afr$Notes)  <- df.afr$Topic
+
+# Make notes a corpus & apply transformations
+Corpus.afr <- lapply(df.afr$Notes, stri_flatten, collapse = " ") %>%
+  VectorSource() %>% Corpus() %>%
+  tm_map(content_transformer(function(x) gsub("AFR301 \\| Unit II", " ", x))) %>%
+  tm_map(content_transformer(function(x) gsub("African American Culture \\| AFR 301", " ", x))) %>%
+  tm_map(content_transformer(function(x) gsub("HUNTER RATLIFF", " ", x))) %>%
+  tm_map(content_transformer(function(x) gsub("HunterRatliff1@gmail.com", " ", x))) %>%
+  tm_map(content_transformer(function(x) gsub("/", " ", x))) %>%
+  tm_map(content_transformer(function(x) gsub("-", " ", x))) %>%
+  tm_map(content_transformer(tolower)) %>%
+  tm_map(content_transformer(stripWhitespace)) %>%
+  tm_map(content_transformer(removePunctuation)) %>%
+  tm_map(content_transformer(removeNumbers)) %>%
+  tm_map(removeWords, stopwords("english")) %>%
+  tm_map(removeWords, c("gov", "hunter", "ratliff", "hunterratliffgmailcom", "afr", "unit")) 
+
+# # List of popular terms
+# words <- TermDocumentMatrix(Notes) %>% findFreqTerms(lowfreq=3)
+# 
+# # Build Term Document Matrix
+# TDM <- Notes %>% tm_map(stemDocument) %>% TermDocumentMatrix()
+```
+
+## Heatmap 
+
+Scaled to each lecture's word count
+
+```{r AFR Heatmap}
+tdms.afr <- getTDM_sparse(Corpus = Corpus.afr, df = df.afr, sparsity = 0.6)
+d3heatmap(t(as.matrix(tdms.afr)), scale = "column")
+```
+
+## Dendrogram
+
+```{r AFR dendrogram}
+tdms.afr <- getTDM_sparse(Corpus = Corpus.afr, df = df.afr, sparsity = 0.55)
+inspect(tdms.afr)
+
+require(cluster)   
+dist_matrx.afr <- dist(tdms.afr, method="euclidian")   
+fit.dist <- hclust(d=dist_matrx.afr, method="ward.D2")   
+fit.dist
+plot(fit.dist, hang=-1, main="Dendrogram: Words used in AFR 301 notes")
+par(mai = c(1,1,1,1)) # bottom, left, top, right
+
+groups <- cutree(fit.dist, k=5)   # "k=" defines the number of clusters you are using   
+rect.hclust(fit.dist, k=3, border="red") # draw dendogram with red borders around the 5 clusters   
+rect.hclust(fit.dist, k=7, border="blue") # draw dendogram with red borders around the 5 clusters   
+rect.hclust(fit.dist, k=10, border="green") # draw dendogram with red borders around the 5 clusters   
+```
+
+## Grouping by kmeans
+
+```{r AFR kmeans}
+library(fpc)   
+kfit <- kmeans(dist_matrx.afr, 4)   
+clusplot(as.matrix(dist_matrx.afr), kfit$cluster, color=T, shade=T, labels=2, lines=0, main="Cluster Plot: Words used in AFR 301 notes")   
+```
+
+## Word Cloud
+
+```{r AFR WC, eval=FALSE}
+Make.Wordcloud(Corpus.afr, words.to.remove = c("black", "white"))
+```
+
+
+```{r, eval=F}
+source("/Users/main/Github/utexas/Classes/vocab_network.R")
+
+
+tdms.afr <- getTDM_sparse(Corpus.afr, df.afr, 0.8)
+# Set seed to make the layout reproducible
+set.seed(3952)
+require(igraph)
+g <- get_igraph(matrix=as.matrix(tdms.afr))
+
+# Remove loops, set labels and degrees of vertices
+g <- simplify(g)
+V(g)$label <- V(g)$name
+V(g)$degree <- degree(g)
+
+# Sizes
+
+V(g)$shape     <- "rectangle"
+V(g)$label.cex <- 0.5 * V(g)$degree / max(V(g)$degree) + 0.3
+V(g)$size      <- 2.5 * nchar(V(g)$label) * V(g)$label.cex
+V(g)$size2     <- 9 * V(g)$label.cex
+
+
+# Colors
+# V(g)$label.color <- "#C0C0C0"  # Light grey
+# V(g)$label.color <- "#25383C"  # Dark Slate Grey
+
+V(g)$frame.color <- NA
+egam <- (log(E(g)$weight)+.4) / max(log(E(g)$weight)+.4)
+E(g)$color <- rgb(.5, .5, 0, egam)
+E(g)$width <- egam
+
+# # plot the graph a few layouts
+# layout1 <- layout.fruchterman.reingold(g)
+# plot(g, layout=layout1)
+
+# Clusters
+betweenness <- cluster_edge_betweenness(g)
+# fast_greedy <- cluster_fast_greedy(g)
+# prop <- cluster_label_prop(g)
+# plot( g, layout=layout.auto)
+plot(betweenness, g)
+                        
+# d3heatmap::d3heatmap(as.matrix(found.dtm), scale = "column")
+```
+
+
+```{r old fxns, echo=F}
+## # Find words with a frequency greater than 10
+## findFreqTerms(TDM, 10)
+
+## # Name Docs by Topic
+## TDM$dimnames$Docs <- Ref_df$Topic
+
+## # Re-stem words
+## TDM$dimnames$Terms <- stemCompletion(Terms(TDM), dictionary = words)
+```
+
+
+
+
+<br><br><br>
+<hr>
+# Contact
+<hr>
+**Hunter Ratliff**
+
+Email: hunterratliff1@gmail.com   
+Twitter: @[HunterRatliff1](https://twitter.com/HunterRatliff1)   
+
+```
+Copyright (C) 2015 Hunter Ratliff
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+
+```
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
